@@ -53,7 +53,7 @@ void write_var(const char *name, char data) {
 	}
 }
 
-char read var(const char *name) {
+char read_var(const char *name) {
 	int pos = search_var(name);
 	if (pos > 0) {
 		return virtual_ram[pos].data;
