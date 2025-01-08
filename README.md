@@ -8,6 +8,6 @@ a Virtual RAM system to avoid have memory problems and not die solving the fragm
 - It's OpenSource
 ----------------------------------------------
 ## What do you need to use it?
-·A C compiller
-·A program to use it
-·Have programmer skills
+-·A C compiller
+-·A program to use it
+-·Have programmer skills
