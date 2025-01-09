@@ -1,3 +1,6 @@
+#ifndef VRAM_H
+#define VRAM_H
+
 #define RAM_LEN 134217728
 
 typedef struct {
@@ -60,3 +63,4 @@ char read_var(const char *name) {
 	}
 	return -1;
 }
+#endif
