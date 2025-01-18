@@ -3,10 +3,12 @@
 
 #define RAM_LEN 134217728
 
+#include "libs/lib.h"
+
 typedef struct {
 	const char name[6];
 	char data;
-	char free = 1;
+	char free;
 } Var;
 
 Var virtual_ram[RAM_LEN];
@@ -17,8 +19,19 @@ void ram_init() {
 	}
 }
 
+int search_var(const char *name) { // ALL VARS NEED TO FINNISH IN FIN_SYMBOL AT LIBS.H
+	for (int i = 0; i < RAM_LEN; i++) {
+		if (vram_strcmp(virtual_ram[i].name, name)) {
+			if (virtual_ram[i].free) {
+				return i;
+			}
+		}
+	}
+	return -1;
+}
+
 int new_var(const char *name, char data) {
-	int res = search_var();
+	int res = search_var(name);
 	if (res > 0) {
 		return 0;
 	}
@@ -31,16 +44,6 @@ int new_var(const char *name, char data) {
 			return 1;
 		}
 	}
-}
-int search_var(const char *name) { // ALL VARS NEED TO FINNISH IN FIN_SYMBOL AT LIBS.H
-	for (int i = 0; i < RAM_LEN; i++) {
-		if (mystrcmp(virtual_ram[i].name, name)) {
-			if (virtual_ram[i].free) {
-				return i;
-			}
-		}
-	}
-	return -1;
 }
 void delete_var(const char *name) {
 	int pos = search_var(name);
